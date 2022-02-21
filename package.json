@@ -17,6 +17,7 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
-    "eslint": "^8.9.0"
+    "eslint": "^8.9.0",
+    "eslint-plugin-jest": "^26.1.1"
   }
 }

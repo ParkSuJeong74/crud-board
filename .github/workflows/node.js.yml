@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v2
@@ -26,3 +25,21 @@ jobs:
       - run: npm run build --if-present
       - run: npm run lint
       - run: npm test
+env:
+  //...
+  jest: true # Jest 글로벌
+plugins:
+  - jest # Jest 테스트를 위해 플러그인이 필요하다.
+rules:
+  //...
+  # Jest Eslint 옵션은 0,1,2 (off, warn, error) 만 옵션으로 사용 가능하다.
+  jest/no-disabled-tests:
+    - warn
+  jest/no-focused-tests:
+    - error
+  jest/no-identical-title:
+    - error
+  jest/prefer-to-have-length:
+    - warn
+  jest/valid-expect:
+    - error
