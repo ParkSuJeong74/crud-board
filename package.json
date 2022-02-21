@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "lint": "./node_modules/.bin/eslint .",
-    "test": "./node_modules/.bin/jest --verbose ./tests"
+    "test": "./node_modules/.bin/jest --verbose ./tests",
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -18,6 +18,21 @@
   },
   "devDependencies": {
     "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^26.1.1"
-  }
+  },
+  "description": "elice lecture note : make the CRUD simple board(node.js, express.js, mongoose)",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParkSuJeong74/crud-board.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParkSuJeong74/crud-board/issues"
+  },
+  "homepage": "https://github.com/ParkSuJeong74/crud-board#readme"
 }
