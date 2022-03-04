@@ -7,9 +7,22 @@ const asyncHandler = require('../utils/async-handler')
 router.get('/', asyncHandler(async (req, res, next) => {
   if(req.query.write){
     res.send('post/edit');
+    return;
   }
-  const posts=await Post.find({})
-  res.render('post/list', { posts })
+  const page = Number(req.query.page || 1)
+  const perPage = Number(req.query.perPage || 10)
+  
+  // total, posts 를 Promise.all 을 사용해 동시에 호출
+  const [total, posts] = await Promise.all([
+    Post.countDocuments({}),
+    Post.find({})
+        .sort({createdAt: -1})
+        .skip(perPage * (page-1))
+        .limit(perPage)// sort, skip, limit 사용
+  ])
+  const totalPage = Math.ceil(total / perPage);
+  
+  res.render('post/list', { posts, page, perPage, totalPage });
 }));
 
 router.get('/:shortId', asyncHandler(async (req, res) => {
